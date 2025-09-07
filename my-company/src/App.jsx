@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
-import Contact from "./pages/Contact";
+import Contact from "./components/Contact";
 
 import "./App.css";
 
@@ -20,6 +20,7 @@ function App() {
             <Routes>
               <Navbar />
               <Footer />
+              <Contact />
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
