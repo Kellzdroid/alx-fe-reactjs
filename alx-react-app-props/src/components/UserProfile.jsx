@@ -1,5 +1,5 @@
 const UserProfile = (props) => {
-  const userData = useContext(UserContext);
+  const userData = [useContext(UserContext), "react"];
   return (
     <div>
       <h2>{props.name}</h2>
