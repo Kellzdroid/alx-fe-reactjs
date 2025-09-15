@@ -1,57 +1,35 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 export const useRecipeStore = create((set, get) => ({
   recipes: [],
-  searchTerm: "",
-  filteredRecipes: [],
+  favorites: [],
+  recommendations: [],
 
+  // Add a new recipe
   addRecipe: (newRecipe) =>
-    set((state) => {
-      const updatedRecipes = [...state.recipes, newRecipe];
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().applyFilter(updatedRecipes, state.searchTerm),
-      };
-    }),
+    set((state) => ({ recipes: [...state.recipes, newRecipe] })),
 
-  updateRecipe: (id, updates) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.map((r) =>
-        r.id === id ? { ...r, ...updates } : r
-      );
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().applyFilter(updatedRecipes, state.searchTerm),
-      };
-    }),
-
+  // Delete a recipe
   deleteRecipe: (id) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.filter((r) => r.id !== id);
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: get().applyFilter(updatedRecipes, state.searchTerm),
-      };
-    }),
-
-  setRecipes: (recipes) =>
     set((state) => ({
-      recipes,
-      filteredRecipes: get().applyFilter(recipes, state.searchTerm),
+      recipes: state.recipes.filter((recipe) => recipe.id !== id),
+      favorites: state.favorites.filter((favId) => favId !== id), // cleanup if deleted
     })),
 
-  setSearchTerm: (term) =>
+  // Update a recipe
+  updateRecipe: (updatedRecipe) =>
     set((state) => ({
-      searchTerm: term,
-      filteredRecipes: get().applyFilter(state.recipes, term),
+      recipes: state.recipes.map((r) =>
+        r.id === updatedRecipe.id ? updatedRecipe : r
+      ),
     })),
 
-  applyFilter: (recipes, term) => {
-    if (!term) return recipes;
-    return recipes.filter(
-      (recipe) =>
-        recipe.title.toLowerCase().includes(term.toLowerCase()) ||
-        recipe.description.toLowerCase().includes(term.toLowerCase())
-    );
-  },
-}));
+  // Favorite management
+  addFavorite: (recipeId) =>
+    set((state) =>
+      state.favorites.includes(recipeId)
+        ? state
+        : { favorites: [...state.favorites, recipeId] }
+    ),
+
+  removeFavorite: (recipeId) =>
