@@ -8,12 +8,17 @@ const EditRecipeForm = ({ recipe, onDone }) => {
   const [description, setDescription] = useState(recipe.description);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ prevents page reload
     if (!title.trim() || !description.trim()) return;
+
     updateRecipe(recipe.id, { title, description });
-    if (onDone) onDone();
-    else navigate(`/recipes/${recipe.id}`);
+
+    if (onDone) {
+      onDone();
+    } else {
+      navigate(`/recipes/${recipe.id}`);
+    }
   };
 
   return (
