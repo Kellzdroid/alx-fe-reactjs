@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
-import { useRecipeStore } from "./recipeStore.js";
+import { useRecipeStore } from "../store/recipeStore.js";
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((s) => s.recipes);
+  const filteredRecipes = useRecipeStore((s) => s.filteredRecipes);
   const deleteRecipe = useRecipeStore((s) => s.deleteRecipe);
 
-  if (!recipes.length) return <p>No recipes yet. Add one!</p>;
+  if (!filteredRecipes.length) {
+    return <p>No recipes match your search.</p>;
+  }
 
   return (
     <div>
       <h2>Recipes</h2>
-      {recipes.map((recipe) => (
+      {filteredRecipes.map((recipe) => (
         <div
           key={recipe.id}
           style={{
@@ -23,16 +25,10 @@ const RecipeList = () => {
           <h3>{recipe.title}</h3>
           <p style={{ marginBottom: 8 }}>{recipe.description}</p>
           <div style={{ display: "flex", gap: 8 }}>
-            <Link
-              to={`/recipes/${recipe.id}`}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={`/recipes/${recipe.id}`}>
               <button>View</button>
             </Link>
-            <Link
-              to={`/recipes/${recipe.id}?edit=true`}
-              style={{ textDecoration: "none" }}
-            >
+            <Link to={`/recipes/${recipe.id}?edit=true`}>
               <button>Edit</button>
             </Link>
             <button onClick={() => deleteRecipe(recipe.id)}>Delete</button>
