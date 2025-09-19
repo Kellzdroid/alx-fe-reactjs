@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { searchUser } from "/services/github.js";
+import { searchUser } from "../services/github.js";
 
 function App() {
   const [username, setUsername] = useState("");
