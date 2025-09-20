@@ -1,13 +1,22 @@
-// src/services/githubService.js
 import axios from "axios";
 
-const BASE_URL = "https://api.github.com/users";
-
-export const fetchUserData = async (username) => {
+// Advanced GitHub user search
+export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
   try {
-    const response = await axios.get(`${BASE_URL}/${username}`);
-    return response.data;
+    let query = "";
+
+    if (username) query += `${username} `;
+    if (location) query += `location:${location} `;
+    if (minRepos) query += `repos:>=${minRepos}`;
+
+    const response = await axios.get(
+      `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
+    );
+
+    // The search API returns an object with "items"
+    return response.data.items || [];
   } catch (error) {
-    throw error; // let the component handle it
+    console.error("Error fetching users:", error);
+    throw error;
   }
 };
