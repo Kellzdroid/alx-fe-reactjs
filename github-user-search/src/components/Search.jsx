@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAdvancedUsers } from "../services/githubService";
+import { fetchUserData, fetchAdvancedUsers } from "../services/githubService";
 
 function Search() {
   const [username, setUsername] = useState("");
@@ -16,16 +16,24 @@ function Search() {
     setResults([]);
 
     try {
-      const users = await fetchAdvancedUsers({
-        username,
-        location,
-        minRepos,
-      });
+      let data;
 
-      if (users.length === 0) {
+      // Decide between simple or advanced search
+      if (username && !location && !minRepos) {
+        const user = await fetchUserData(username);
+        data = [user]; // wrap single user in array for consistent rendering
+      } else {
+        data = await fetchAdvancedUsers({
+          username,
+          location,
+          minRepos,
+        });
+      }
+
+      if (!data || data.length === 0) {
         setError("Looks like we cant find the user");
       } else {
-        setResults(users);
+        setResults(data);
       }
     } catch (err) {
       setError("Looks like we cant find the user");
@@ -83,7 +91,7 @@ function Search() {
         <ul className="space-y-4">
           {results.map((user) => (
             <li
-              key={user.id}
+              key={user.id || user.login}
               className="flex items-center space-x-4 border p-3 rounded hover:bg-gray-50"
             >
               <img
