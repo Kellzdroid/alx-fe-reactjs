@@ -1,5 +1,18 @@
 import axios from "axios";
 
+// Fetch a single user by username
+export const fetchUserData = async (username) => {
+  try {
+    const response = await axios.get(
+      `https://api.github.com/users/${username}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    throw error;
+  }
+};
+
 // Advanced GitHub user search
 export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
   try {
@@ -13,7 +26,6 @@ export const fetchAdvancedUsers = async ({ username, location, minRepos }) => {
       `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
     );
 
-    // The search API returns an object with "items"
     return response.data.items || [];
   } catch (error) {
     console.error("Error fetching users:", error);
