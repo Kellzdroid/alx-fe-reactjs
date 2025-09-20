@@ -1,11 +1,8 @@
-import Search from "./components/Search";
-
 function App() {
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>GitHub User Search</h1>
-      <Search />
-    </div>
+    <h1 className="text-3xl font-bold underline text-red-600 text-center mt-10">
+      Hello Tailwind + React
+    </h1>
   );
 }
 
