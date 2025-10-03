@@ -17,7 +17,12 @@ function HomePage() {
       <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">
         Featured Recipes
       </h1>
-
+      <Link
+        to="/add-recipe"
+        className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition mb-10"
+      >
+        ➕ Add New Recipe
+      </Link>
       {/* Recipe Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {recipes.map((recipe) => (
