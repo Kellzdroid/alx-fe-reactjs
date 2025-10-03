@@ -3,18 +3,61 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "/images/spaghetti.jpeg"
+    "image": "/public/images/spaghetti.jpeg",
+    "ingredients": [
+      "2 cups of spaghetti",
+      "1 cup grated Parmesan cheese",
+      "4 strips of bacon (or pancetta)",
+      "2 large eggs",
+      "1 tsp black pepper"
+    ],
+    "instructions": [
+      "Boil spaghetti until al dente, then drain.",
+      "Fry bacon until crispy and set aside.",
+      "Whisk eggs and cheese together in a bowl.",
+      "Toss hot pasta with egg mixture to form a creamy sauce.",
+      "Mix in bacon and season with pepper. Serve immediately."
+    ]
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato.",
-    "image": "/images/takki.jpeg"
+    "summary": "Chunks of grilled chicken (tikka) cooked in a buttery tomato sauce.",
+    "image": "/public/images/takki.jpeg",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup tomato puree",
+      "1/2 cup cream",
+      "2 tbsp tikka masala spice mix",
+      "2 tbsp butter"
+    ],
+    "instructions": [
+      "Marinate chicken with spices and grill until cooked.",
+      "Heat butter and tomato puree in a pan.",
+      "Add grilled chicken and simmer for 10 minutes.",
+      "Stir in cream and cook for another 5 minutes.",
+      "Serve hot with rice or naan."
+    ]
   },
+
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Simple, healthy, and delicious breakfast toast with creamy avocado spread.",
-    "image": "/public/images/avocado.jpeg"
+    "image": "/public/images/avocado.jpeg",
+    "ingredients": [
+      "500g chicken breast, cubed",
+      "1 cup tomato puree",
+      "1/2 cup cream",
+      "2 tbsp tikka masala spice mix",
+      "2 tbsp butter"
+    ],
+    "instructions": [
+      "Marinate chicken with spices and grill until cooked.",
+      "Heat butter and tomato puree in a pan.",
+      "Add grilled chicken and simmer for 10 minutes.",
+      "Stir in cream and cook for another 5 minutes.",
+      "Serve hot with rice or naan."
+    ]
   }
 ]
