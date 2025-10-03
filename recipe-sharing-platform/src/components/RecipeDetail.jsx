@@ -37,31 +37,27 @@ function RecipeDetail() {
           </h1>
           <p className="text-gray-600 mb-6">{recipe.summary}</p>
 
-          {/* Ingredients Section */}
+          {/* ✅ Ingredients Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-700 mb-2">
               🥬 Ingredients
             </h2>
             <ul className="list-disc list-inside space-y-1 text-gray-700">
-              <li>2 cups of pasta</li>
-              <li>1 cup grated cheese</li>
-              <li>4 strips of bacon</li>
-              <li>2 eggs</li>
-              <li>Black pepper to taste</li>
+              {recipe.ingredients?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
           </div>
 
-          {/* Instructions Section */}
+          {/* ✅ Instructions Section */}
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-700 mb-2">
               👩‍🍳 Instructions
             </h2>
             <ol className="list-decimal list-inside space-y-2 text-gray-700 leading-relaxed">
-              <li>Boil pasta until al dente and drain.</li>
-              <li>Fry the bacon until crispy and set aside.</li>
-              <li>Whisk eggs and cheese together in a bowl.</li>
-              <li>Mix hot pasta with egg mixture to create a creamy sauce.</li>
-              <li>Add bacon and season with black pepper. Serve warm!</li>
+              {recipe.instructions?.map((step, index) => (
+                <li key={index}>{step}</li>
+              ))}
             </ol>
           </div>
 
