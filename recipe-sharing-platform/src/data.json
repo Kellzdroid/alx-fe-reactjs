@@ -3,18 +3,18 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "/images/spaghetti.jpeg"
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/300x200"
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato.",
+    "image": "/images/takki.jpeg"
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Simple, healthy, and delicious breakfast toast with creamy avocado spread.",
-    "image": "https://via.placeholder.com/300x200"
+    "image": "/public/images/avocado.jpeg"
   }
 ]
